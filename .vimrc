@@ -17,7 +17,7 @@ Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 
-"-- Vanilla Stuff
+"-- Vanilla Settings
 set noswapfile
 set tw=79
 set fo+=t
@@ -32,6 +32,7 @@ let mapleader =","
 let maplocalleader=";"
 syntax on
 
+"-- Modded Settings
 colorscheme onedark
 set omnifunc=syntaxcomplete#Complete
 let g:gruvbox = {}
@@ -53,9 +54,7 @@ let g:onedark = {}
 let g:onedark_termcolors=256
 
 
-map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
-map <leader>o :setlocal spell! spelllang=en_us<CR>
-map <leader>n :NERDTreeToggle<CR>
+"-- Vanilla Keybinds
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -64,6 +63,12 @@ map <leader><leader> <Esc>/<++><Enter>"_c4l
 inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 nnoremap S :%s//g<Left><Left>
+
+"-- Modded Keybinds
+map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <leader>n :NERDTreeToggle<CR>
+
 
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
