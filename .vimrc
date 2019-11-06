@@ -1,4 +1,3 @@
-"execute pathogen#infect()
 set nocompatible
 filetype off
 set shell=/bin/bash
