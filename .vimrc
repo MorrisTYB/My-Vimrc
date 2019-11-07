@@ -78,19 +78,18 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufWritePre * %s/\s\+$//e
 
 
-autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
-autocmd Filetype markdown inoremap ,b ****<++><Esc>F*hi
-autocmd Filetype markdown inoremap ,s ~~~~<++><Esc>F~hi
-autocmd Filetype markdown inoremap ,i **<++><Esc>F*i
-autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
-autocmd Filetype markdown inoremap ,img ![](<++>)<++><Esc>F[a
-autocmd Filetype markdown inoremap ,link [](<++>)<++><Esc>F[a
-autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA<Esc>:r!date<Cr>i<Backspace><Esc>3el6deA<Space>
-autocmd Filetype markdown inoremap ,4 ####<Space><Enter>+ <++><Esc>kA
-autocmd Filetype markdown inoremap ,l --------<Enter>
-autocmd FileType markdown inoremap ,c ```<Space><Enter>```<Esc>2kA
+"-- Markdown Keybinds
+autocmd Filetype markdown inoremap <leader>n ---<Enter><Enter>
+autocmd Filetype markdown inoremap <leader>b ****<++><Esc>F*hi
+autocmd Filetype markdown inoremap <leader>s ~~~~<++><Esc>F~hi
+autocmd Filetype markdown inoremap <leader>i **<++><Esc>F*i
+autocmd Filetype markdown inoremap <leader>h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown inoremap <leader>img ![](<++>)<++><Esc>F[a
+autocmd Filetype markdown inoremap <leader>link [](<++>)<++><Esc>F[a
+autocmd Filetype markdown inoremap <leader>2 ##<Space><Enter><++><Esc>kA<Esc>:r!date<Cr>i<Backspace><Esc>3el6deA<Space>
+autocmd Filetype markdown inoremap <leader>3 ###<Space><Enter>+ <++><Esc>kA
+autocmd Filetype markdown inoremap <leader>l --------<Enter>
+autocmd FileType markdown inoremap <leader>c ```<Space><Enter>```<Esc>2kA
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
