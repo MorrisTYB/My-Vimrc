@@ -14,17 +14,20 @@ Plugin 'tpope/vim-surround'
 Plugin 'itchyny/lightline.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'turbio/bracey.vim'
 call vundle#end()
 filetype plugin indent on
 
 "-- Vanilla Settings
+set splitright
+set diffopt+=vertical
 set noswapfile
 set tw=79
 set fo+=t
 set wm=2
 set number rnu
-set tabstop=2
-set noexpandtab
+set tabstop=4
+set expandtab
 set shiftwidth=2
 set encoding=utf-8
 set splitbelow splitright
@@ -35,14 +38,20 @@ syntax on
 "-- Modded Settings
 colorscheme onedark
 set omnifunc=syntaxcomplete#Complete
+let g:bracey_eval_on_save=1
+let g:bracey_server_port=8888
 let g:gruvbox = {}
 let g:gruvbox.italic=1
 set background=dark
 set laststatus=2
+let g:limelight_conceal_ctermfg=1
 let g:lightline = {}
-let g:lightline.subseparator = {
-       \ 'left': "", 'right': ''
-       \ }
+if !has('gui_running')
+    set t_Co=256
+endif
+"let g:lightline.subseparator = {
+"      \ 'left': "", 'right': ''
+"      \ }
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_fenced_languages = ['csharp=cs', 'java=java']
 au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
@@ -76,23 +85,23 @@ autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markd
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\t/    /g
 
 
 "-- Markdown Keybinds
 autocmd Filetype markdown inoremap <leader>n ---<Enter><Enter>
 autocmd Filetype markdown inoremap <leader>b ****<++><Esc>F*hi
 autocmd Filetype markdown inoremap <leader>s ~~~~<++><Esc>F~hi
-autocmd Filetype markdown inoremap <leader>i **<++><Esc>F*i
 autocmd Filetype markdown inoremap <leader>h ====<Space><++><Esc>F=hi
 autocmd Filetype markdown inoremap <leader>img ![](<++>)<++><Esc>F[a
 autocmd Filetype markdown inoremap <leader>link [](<++>)<++><Esc>F[a
-autocmd Filetype markdown inoremap <leader>2 ##<Space><Enter><++><Esc>kA<Esc>:r!date<Cr>i<Backspace><Esc>3el6deA<Space>
+autocmd Filetype markdown inoremap <leader>2 ##<Space><Enter><++><Esc>kA<Esc>:r!date<Cr>i<Backspace><Esc>4el8deA<Space>
 autocmd Filetype markdown inoremap <leader>3 ###<Space><Enter>+ <++><Esc>kA
 autocmd Filetype markdown inoremap <leader>l --------<Enter>
 autocmd FileType markdown inoremap <leader>c ```<Space><Enter>```<Esc>2kA
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ~/.config/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
+    echo "Downloading junegunn/vim-plug to manage plugins..."
+    silent !mkdir -p ~/.config/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
 endif
